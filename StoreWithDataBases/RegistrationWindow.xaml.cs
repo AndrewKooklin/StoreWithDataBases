@@ -1,16 +1,13 @@
-﻿using System;
+﻿using StoreWithDataBases.Check;
+using StoreWithDataBases.Data;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace StoreWithDataBases
 {
@@ -33,7 +30,35 @@ namespace StoreWithDataBases
 
         private void Click_Registration(object sender, RoutedEventArgs e)
         {
-
+            CheckUser checkUser = new CheckUser();
+            //if(!checkUser.CheckUserToDataBase(tbUserName.Text, tbPassword.Password))
+            //{
+                ConnectToSQLDB connectToSQLDB = new ConnectToSQLDB();
+                SqlConnection sqlConnection = connectToSQLDB.GetSqlConnection();
+                try
+                {
+                    string query = $"INSERT INTO Users(UserName, Password) VALUES('{tbUserName.Text}', '{tbPassword.Password}')";
+                    SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+                sqlConnection.Open();
+                    //connectToSQLDB.OpenSQLConnection();
+                    sqlCommand.ExecuteNonQuery();
+                    connectToSQLDB.CloseSQLConnection();
+                    MessageBox.Show("You succesfully registered", "Error",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show($"Could not connect to database({ex.Message})", "Error",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                MessageBox.Show("");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("User is already registered," +
+            //        "\nenter through the Login form", "Error",
+            //            MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
         }
     }
 }

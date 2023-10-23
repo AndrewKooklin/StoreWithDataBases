@@ -11,9 +11,9 @@ namespace StoreWithDataBases.Data
 {
     public class ConnectToSQLDB
     {
-        static string con = "StoreWithDataBases.Properties.Settings.Default.SQLBase";
+        static string con = StoreWithDataBases.Properties.Settings.Default.SQLBase;
 
-        SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings[con].ConnectionString);
+        SqlConnection sqlConnection = new SqlConnection(con);
 
         public void OpenSQLConnection()
         {

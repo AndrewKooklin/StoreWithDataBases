@@ -18,8 +18,6 @@ namespace StoreWithDataBases.Check
             object user = null;
             object pass = null;
             ConnectToSQLDB connectToSQLDB = new ConnectToSQLDB();
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-            DataTable dataTable = new DataTable();
 
             string query = $"SELECT UserName, Password FROM Users WHERE UserName = '{userName}' AND Password = '{password}'";
 
@@ -37,25 +35,35 @@ namespace StoreWithDataBases.Check
 
                 sqlDataReader.Close();
                 connectToSQLDB.CloseSQLConnection();
+
+                if (user == null || pass == null)
+                {
+                    return false;
+                }
+                else return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error connection to database({ex.Message})", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-            if (user == null || pass == null)
-            {
-                return false;
-            }
-            else return true;
+            return false;
         }
 
         public bool CheckValidationUserName(string input)
         {
             string userName = input;
-            Regex regex = new Regex(@"^(?=.*[^\s])[0-9a-zA-Z]{8,}");
+            Regex regex = new Regex(@"^[0-9a-zA-Z]{8,}");
 
             if (regex.IsMatch(userName))
+            {
+                return true;
+            }
+            else return false;
+        }
+
+        public bool CheckValidationPassword(string input)
+        {
+            if (Regex.IsMatch(input, @"^(?=.*[0-9])(?=.*[A-Z])\w{8,}"))
             {
                 return true;
             }

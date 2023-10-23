@@ -65,3 +65,5 @@ C:\repos\StoreWithDataBases\StoreWithDataBases\bin\Debug\Data\OleDBBase.mdb
 C:\repos\StoreWithDataBases\StoreWithDataBases\bin\Debug\Data\SQLBase.ldf
 C:\repos\StoreWithDataBases\StoreWithDataBases\bin\Debug\Data\SQLBase.mdf
 C:\repos\StoreWithDataBases\StoreWithDataBases\obj\Debug\RegistrationWindow.baml
+C:\repos\StoreWithDataBases\StoreWithDataBases\obj\Debug\ClientsWindow.g.cs
+C:\repos\StoreWithDataBases\StoreWithDataBases\obj\Debug\ClientsWindow.baml

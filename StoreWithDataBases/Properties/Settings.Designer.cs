@@ -26,18 +26,6 @@ namespace StoreWithDataBases.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("data source=(localdb)\\MSSQLLocalDB;initial catalog=SQLBase;integrated security=Tr" +
-            "ue;connect timeout=30;encrypt=False;trustservercertificate=False;applicationinte" +
-            "nt=ReadWrite;multisubnetfailover=False")]
-        public string SQLBase {
-            get {
-                return ((string)(this["SQLBase"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\repos\\StoreWithDataBases\\Data\\Ol" +
             "eDbBase.mdb;Jet OLEDB:Database Password=admin")]
         public string OleDbBase {
@@ -67,6 +55,17 @@ namespace StoreWithDataBases.Properties {
             }
             set {
                 this["Password"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Data\\SQLBase." +
+            "mdf;Integrated Security=True;Connect Timeout=30")]
+        public string SQLBase {
+            get {
+                return ((string)(this["SQLBase"]));
             }
         }
     }
