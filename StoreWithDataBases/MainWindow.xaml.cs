@@ -44,7 +44,7 @@ namespace StoreWithDataBases
 
         private void Click_LogIn(object sender, RoutedEventArgs e)
         {
-            if(!checkUser.CheckUserToDataBase(tbUserName.Text, tbPassword.Password))
+            if(checkUser.CheckUserToDataBase(tbUserName.Text, tbPassword.Password))
             {
                 MessageBox.Show("User not found" +
                     "\ncheck UserName and Password" +
@@ -54,12 +54,12 @@ namespace StoreWithDataBases
             }
             else
             {
-                MessageBox.Show("You have successfully log in",
-                    "Success",
-                    MessageBoxButton.OK, MessageBoxImage.Error);
                 this.Hide();
                 ClientsWindow clientsWindow = new ClientsWindow();
                 clientsWindow.Show();
+                MessageBox.Show("You have successfully log in",
+                    "Success",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
     }

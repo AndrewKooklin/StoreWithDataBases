@@ -31,16 +31,35 @@ namespace StoreWithDataBases
         private void Click_Registration(object sender, RoutedEventArgs e)
         {
             CheckUser checkUser = new CheckUser();
-            //if(!checkUser.CheckUserToDataBase(tbUserName.Text, tbPassword.Password))
-            //{
+
+            if (!checkUser.CheckValidationUserName(tbUserName.Text))
+            {
+                MessageBox.Show("Username must be " +
+                                "\nat least 5 characters",
+                                "Require",
+                                MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if (!checkUser.CheckValidationPassword(tbPassword.Password))
+            {
+                MessageBox.Show("Password must be at least " +
+                                "\ncontain 5 characters, " +
+                                "\nat least one small one," +
+                                "\none capital," +
+                                "\nand one digit", "Require",
+                                MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if (checkUser.CheckUserToDataBase(tbUserName.Text, tbPassword.Password))
+            {
                 ConnectToSQLDB connectToSQLDB = new ConnectToSQLDB();
-                SqlConnection sqlConnection = connectToSQLDB.GetSqlConnection();
                 try
                 {
                     string query = $"INSERT INTO Users(UserName, Password) VALUES('{tbUserName.Text}', '{tbPassword.Password}')";
-                    SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
-                sqlConnection.Open();
-                    //connectToSQLDB.OpenSQLConnection();
+                    SqlCommand sqlCommand = new SqlCommand(query, connectToSQLDB.GetSqlConnection());
+                    connectToSQLDB.OpenSQLConnection();
                     sqlCommand.ExecuteNonQuery();
                     connectToSQLDB.CloseSQLConnection();
                     MessageBox.Show("You succesfully registered", "Error",
@@ -52,13 +71,13 @@ namespace StoreWithDataBases
                         MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 MessageBox.Show("");
-            //}
-            //else
-            //{
-            //    MessageBox.Show("User is already registered," +
-            //        "\nenter through the Login form", "Error",
-            //            MessageBoxButton.OK, MessageBoxImage.Error);
-            //}
+            }
+            else
+            {
+                MessageBox.Show("User is already registered," +
+                    "\nenter through the Login form", "Error",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

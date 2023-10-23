@@ -36,7 +36,7 @@ namespace StoreWithDataBases.Check
                 sqlDataReader.Close();
                 connectToSQLDB.CloseSQLConnection();
 
-                if (user == null || pass == null)
+                if (user.ToString().Equals(userName) && pass.ToString().Equals(password))
                 {
                     return false;
                 }
@@ -52,7 +52,7 @@ namespace StoreWithDataBases.Check
         public bool CheckValidationUserName(string input)
         {
             string userName = input;
-            Regex regex = new Regex(@"^[0-9a-zA-Z]{8,}");
+            Regex regex = new Regex(@"^[0-9a-zA-Z]{5,}");
 
             if (regex.IsMatch(userName))
             {
@@ -63,7 +63,7 @@ namespace StoreWithDataBases.Check
 
         public bool CheckValidationPassword(string input)
         {
-            if (Regex.IsMatch(input, @"^(?=.*[0-9])(?=.*[A-Z])\w{8,}"))
+            if (Regex.IsMatch(input, @"^(?=.*[0-9])(?=.*[A-Z])\w{5,}"))
             {
                 return true;
             }
