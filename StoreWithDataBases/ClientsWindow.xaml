@@ -8,8 +8,46 @@
         Title="Clients" 
         Height="450" 
         Width="800"
+        Background="AliceBlue"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <DataGrid x:Name="dgClients"
+                  IsSynchronizedWithCurrentItem="True"
+                  SelectionMode="Single"
+                  AutoGenerateColumns="False"
+                  ItemsSource="{Binding}"
+                  IsReadOnly="False"
+                  CurrentCellChanged="CurrentCell_Changed"
+                  CellEditEnding="CellEdit_Ending">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="tcId"
+                                    Binding="{Binding Id}"
+                                    Header="Id"
+                                    IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="tcLastName"
+                                    Binding="{Binding LastName}"
+                                    Header="Фамилия"/>
+                <DataGridTextColumn x:Name="tcFirstName"
+                                    Binding="{Binding FirstName}"
+                                    Header="Имя"/>
+                <DataGridTextColumn x:Name="tcFathersName"
+                                    Binding="{Binding FathersName}"
+                                    Header="Отчество"/>
+                <DataGridTextColumn x:Name="tcPhoneNumber"
+                                    Binding="{Binding PhoneNumber}"
+                                    Header="Телефон"/>
+                <DataGridTextColumn x:Name="tcEMail"
+                                    Binding="{Binding EMail}"
+                                    Header="E-Mail"/>
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Добавить"></MenuItem>
+                    <MenuItem Header="Удалить"></MenuItem>
+                    <MenuItem Header="Изменить"></MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            
+        </DataGrid>
     </Grid>
 </Window>

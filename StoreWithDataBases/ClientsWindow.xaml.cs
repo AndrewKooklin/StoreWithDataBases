@@ -1,5 +1,8 @@
-﻿using System;
+﻿using StoreWithDataBases.Data;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +22,39 @@ namespace StoreWithDataBases
     /// </summary>
     public partial class ClientsWindow : Window
     {
+        SqlDataAdapter sqlDA;
+        DataTable dT;
+        DataRowView rowView;
+        ConnectToSQLDB connectToSQLDB;
         public ClientsWindow()
         {
             InitializeComponent();
+            CreateCommands();
+        }
+
+        private void CreateCommands()
+        {
+            dT = new DataTable();
+            sqlDA = new SqlDataAdapter();
+            string query = $"SELECT Id, LastName, FirstName, FathersName," +
+                            $"PhoneNumber, EMail FROM Clients";
+            connectToSQLDB = new ConnectToSQLDB();
+            sqlDA.SelectCommand = new SqlCommand(query, connectToSQLDB.GetSqlConnection());
+
+
+
+            sqlDA.Fill(dT);
+            dgClients.DataContext = dT.DefaultView;
+        }
+
+        private void CurrentCell_Changed(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CellEdit_Ending(object sender, DataGridCellEditEndingEventArgs e)
+        {
+
         }
     }
 }
