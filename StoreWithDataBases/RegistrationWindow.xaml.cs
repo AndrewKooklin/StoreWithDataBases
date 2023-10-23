@@ -52,6 +52,13 @@ namespace StoreWithDataBases
                 return;
             }
 
+            if(!checkUser.CheckEqualPasswords(tbPassword.Password, tbConfirmPassword.Password))
+            {
+                MessageBox.Show("Password and Confirm Password are not equals", "Require",
+                                MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             if (checkUser.CheckUserToDataBase(tbUserName.Text, tbPassword.Password))
             {
                 ConnectToSQLDB connectToSQLDB = new ConnectToSQLDB();

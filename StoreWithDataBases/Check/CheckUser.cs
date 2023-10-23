@@ -36,11 +36,15 @@ namespace StoreWithDataBases.Check
                 sqlDataReader.Close();
                 connectToSQLDB.CloseSQLConnection();
 
+                if(user == null || pass == null)
+                {
+                    return true;
+                }
+
                 if (user.ToString().Equals(userName) && pass.ToString().Equals(password))
                 {
                     return false;
                 }
-                else return true;
             }
             catch (Exception ex)
             {
@@ -68,6 +72,15 @@ namespace StoreWithDataBases.Check
                 return true;
             }
             else return false;
+        }
+
+        public bool CheckEqualPasswords(string password, string confirmPassword)
+        {
+            if (password.Equals(confirmPassword))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -9,6 +9,7 @@
         Height="450" 
         Width="600"
         WindowStartupLocation="CenterScreen">
+    
     <Grid>
         <Label Content="Registration form" 
                HorizontalAlignment="Center"
@@ -51,7 +52,7 @@
             Margin="10,240,0,0" 
             VerticalAlignment="Top" 
             Width="182"/>
-        <PasswordBox x:Name="tbPassword_Copy"
+        <PasswordBox x:Name="tbConfirmPassword"
             HorizontalAlignment="Left" 
             Height="37" 
             Margin="246,240,0,0"  
