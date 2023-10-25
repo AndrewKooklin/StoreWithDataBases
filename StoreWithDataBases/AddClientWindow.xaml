@@ -1,0 +1,92 @@
+﻿<Window x:Class="StoreWithDataBases.AddClientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StoreWithDataBases"
+        mc:Ignorable="d"
+        Title="AddClientWindow" 
+        Height="400" 
+        Width="450"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+        <Style x:Key="TextBoxStyle" TargetType="TextBox">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <Label Content="Add client form"
+               FontSize="25" 
+               Margin="100,0,0,0"  
+               VerticalAlignment="Top" 
+               Height="40"
+               Width="200"/>
+        <Label Content="Фамилия"
+               Margin="57,64,0,0"
+               Padding="30,5,0,0"
+               Style="{StaticResource LabelStyle}"/>
+        <Label Content="Имя"
+            Margin="57,113,0,0"
+               Padding="65,5,0,0"
+               Style="{StaticResource LabelStyle}"/>
+        <Label Content="Отчество"
+            Margin="57,165,0,0"
+               Padding="32,5,0,0"
+               Style="{StaticResource LabelStyle}"/>
+        <Label Content="Телефон"
+            Margin="57,215,0,0"
+               Padding="37,5,0,0"
+               Style="{StaticResource LabelStyle}"/>
+        <Label Content="E-Mail"
+            Margin="57,267,0,0"
+               Padding="55,5,0,0"
+               Style="{StaticResource LabelStyle}"/>
+        <TextBox x:Name="tbLastName"
+                 Style="{StaticResource TextBoxStyle}"
+                 Margin="172,64,0,0"/>
+        <TextBox x:Name="tbFirstName"
+                 Style="{StaticResource TextBoxStyle}" 
+                 Margin="172,113,0,0"/>
+        <TextBox x:Name="tbFathersName"
+                 Style="{StaticResource TextBoxStyle}" 
+                 Margin="172,165,0,0"/>
+        <TextBox x:Name="tbPhoneNumber"
+                 Style="{StaticResource TextBoxStyle}"
+                 Margin="172,215,0,0"/>
+        <TextBox x:Name="tbEMail"
+                 Style="{StaticResource TextBoxStyle}" 
+                 Margin="172,267,0,0"/>
+        <Button x:Name="btnAddClient"
+                Content="Добавить" 
+                HorizontalAlignment="Left" 
+                Margin="102,323,0,0" 
+                VerticalAlignment="Top" 
+                Width="75"/>
+        <Button x:Name="btnClearForm"
+                Content="Очистить" 
+                HorizontalAlignment="Left" 
+                Margin="201,323,0,0" 
+                VerticalAlignment="Top" 
+                Width="75"/>
+        <Button x:Name="btnCancel"
+                Content="Отменить" 
+                HorizontalAlignment="Left" 
+                Margin="297,323,0,0" 
+                VerticalAlignment="Top" 
+                Width="75"/>
+
+    </Grid>
+</Window>

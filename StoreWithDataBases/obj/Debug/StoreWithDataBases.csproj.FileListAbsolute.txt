@@ -67,3 +67,5 @@ C:\repos\StoreWithDataBases\StoreWithDataBases\bin\Debug\Data\SQLBase.mdf
 C:\repos\StoreWithDataBases\StoreWithDataBases\obj\Debug\RegistrationWindow.baml
 C:\repos\StoreWithDataBases\StoreWithDataBases\obj\Debug\ClientsWindow.g.cs
 C:\repos\StoreWithDataBases\StoreWithDataBases\obj\Debug\ClientsWindow.baml
+C:\repos\StoreWithDataBases\StoreWithDataBases\obj\Debug\AddClientWindow.g.cs
+C:\repos\StoreWithDataBases\StoreWithDataBases\obj\Debug\AddClientWindow.baml

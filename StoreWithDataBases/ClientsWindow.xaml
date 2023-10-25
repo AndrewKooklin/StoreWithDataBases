@@ -6,48 +6,85 @@
         xmlns:local="clr-namespace:StoreWithDataBases"
         mc:Ignorable="d"
         Title="Clients" 
-        Height="450" 
-        Width="800"
+        Height="350" 
+        Width="650"
         Background="AliceBlue"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" 
+        Loaded="ClientsWindow_Loaded" 
+        Unloaded="ClientsWindow_Unloaded"
+        >
     <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
         <DataGrid x:Name="dgClients"
                   IsSynchronizedWithCurrentItem="True"
                   SelectionMode="Single"
                   AutoGenerateColumns="False"
                   ItemsSource="{Binding}"
                   IsReadOnly="False"
+                  BorderThickness="2"
                   CurrentCellChanged="CurrentCell_Changed"
                   CellEditEnding="CellEdit_Ending">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="tcId"
                                     Binding="{Binding Id}"
                                     Header="Id"
+                                    Width="40"
                                     IsReadOnly="True"/>
                 <DataGridTextColumn x:Name="tcLastName"
                                     Binding="{Binding LastName}"
-                                    Header="Фамилия"/>
+                                    Header="Фамилия"
+                                    Width="80"/>
                 <DataGridTextColumn x:Name="tcFirstName"
                                     Binding="{Binding FirstName}"
-                                    Header="Имя"/>
+                                    Header="Имя"
+                                    Width="80"/>
                 <DataGridTextColumn x:Name="tcFathersName"
                                     Binding="{Binding FathersName}"
-                                    Header="Отчество"/>
+                                    Header="Отчество"
+                                    Width="90"/>
                 <DataGridTextColumn x:Name="tcPhoneNumber"
                                     Binding="{Binding PhoneNumber}"
-                                    Header="Телефон"/>
+                                    Header="Телефон" 
+                                    Width="80"/>
                 <DataGridTextColumn x:Name="tcEMail"
                                     Binding="{Binding EMail}"
-                                    Header="E-Mail"/>
+                                    Header="E-Mail"
+                                    Width="139"/>
             </DataGrid.Columns>
-            <DataGrid.ContextMenu>
+            <!--<DataGrid.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Добавить"></MenuItem>
-                    <MenuItem Header="Удалить"></MenuItem>
-                    <MenuItem Header="Изменить"></MenuItem>
+                    <MenuItem Header="Добавить" Click="MIAddClient_Click"></MenuItem>
+                    <MenuItem Header="Удалить" Click="MIDeleteClient_Click"></MenuItem>
                 </ContextMenu>
-            </DataGrid.ContextMenu>
-            
+            </DataGrid.ContextMenu>-->
+
         </DataGrid>
+        <Button Grid.Column="1"
+                Content="Добавить"
+                VerticalAlignment="Top"
+                FontSize="15"
+                FontWeight="SemiBold"
+                Height="25"
+                Width="85"
+                Margin="10, 10, 10, 0"
+                Click="MIAddClient_Click">
+        </Button>
+        <Button Grid.Column="1"
+                Content="Удалить"
+                VerticalAlignment="Top"
+                FontSize="15"
+                FontWeight="SemiBold"
+                Height="25"
+                Width="85"
+                Margin="18, 60, 20, 10"
+                Click="MIDeleteClient_Click">
+        </Button>
     </Grid>
 </Window>
