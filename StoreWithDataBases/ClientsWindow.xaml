@@ -11,10 +11,9 @@
         Background="AliceBlue"
         WindowStartupLocation="CenterScreen" 
         Loaded="ClientsWindow_Loaded" 
-        Unloaded="ClientsWindow_Unloaded"
-        >
-    <Grid>
+        Unloaded="ClientsWindow_Unloaded">
 
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -85,6 +84,32 @@
                 Width="85"
                 Margin="18, 60, 20, 10"
                 Click="MIDeleteClient_Click">
+        </Button>
+        <Button Grid.Column="1"
+                VerticalAlignment="Top"
+                FontSize="15"
+                FontWeight="SemiBold"
+                Height="50"
+                Width="85"
+                Margin="18, 110, 20, 10"
+                Click="ShowClientProducts_Click">
+            <Button.Content>
+                <TextBlock Text="Покупки клиента" TextWrapping="Wrap">
+                </TextBlock>
+            </Button.Content>
+        </Button>
+        <Button Grid.Column="1"
+                VerticalAlignment="Top"
+                FontSize="15"
+                FontWeight="SemiBold"
+                Height="50"
+                Width="85"
+                Margin="18, 180, 20, 10"
+                Click="ShowAllPurchases_Click">
+            <Button.Content>
+                <TextBlock Text="Все покупки" TextWrapping="Wrap">
+                </TextBlock>
+            </Button.Content>
         </Button>
     </Grid>
 </Window>

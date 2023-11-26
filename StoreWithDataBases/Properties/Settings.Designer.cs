@@ -23,17 +23,6 @@ namespace StoreWithDataBases.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\repos\\StoreWithDataBases\\Data\\Ol" +
-            "eDbBase.mdb;Jet OLEDB:Database Password=admin")]
-        public string OleDbBase {
-            get {
-                return ((string)(this["OleDbBase"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
@@ -66,6 +55,38 @@ namespace StoreWithDataBases.Properties {
         public string SQLBase {
             get {
                 return ((string)(this["SQLBase"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\repos\\StoreWithDataBases\\StoreWi" +
+            "thDataBases\\Data\\OleDbBase.mdb;Jet OLEDB:Database Password=admin")]
+        public string OleDbBase {
+            get {
+                return ((string)(this["OleDbBase"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\\Data\\OleDBBase.mdb")]
+        public string OleDBBaseConnectionString {
+            get {
+                return ((string)(this["OleDBBaseConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\Data\\OleDbBase.mdb;" +
+            "Jet OLEDB:Database Password=admin")]
+        public string OleDbBaseConnectionString1 {
+            get {
+                return ((string)(this["OleDbBaseConnectionString1"]));
             }
         }
     }

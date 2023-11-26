@@ -41,11 +41,11 @@ namespace StoreWithDataBases
             //InsertCommand
             query = @"INSERT INTO Clients (LastName, FirstName, FathersName, PhoneNumber, EMail) 
                                  VALUES (@LastName, @FirstName,  @FathersName,  @PhoneNumber, @EMail);
-                                SET @id = @@IDENTITY;";
+                                SET @Id = @@IDENTITY;";
 
             sqlDA.InsertCommand = new SqlCommand(query, connectToSQLDB.GetSqlConnection());
 
-            sqlDA.InsertCommand.Parameters.Add("@id", SqlDbType.Int, 4, "id").Direction = ParameterDirection.Output;
+            sqlDA.InsertCommand.Parameters.Add("@Id", SqlDbType.Int, 4, "Id").Direction = ParameterDirection.Output;
             sqlDA.InsertCommand.Parameters.Add("@LastName", SqlDbType.VarChar, 50, "LastName");
             sqlDA.InsertCommand.Parameters.Add("@FirstName", SqlDbType.VarChar, 50, "FirstName");
             sqlDA.InsertCommand.Parameters.Add("@FathersName", SqlDbType.VarChar, 50, "FathersName");
@@ -113,7 +113,7 @@ namespace StoreWithDataBases
         {
             if (dgClients.SelectedIndex == -1 || rowView == null)
             {
-                MessageBox.Show("Select client", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Выберите клиента", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             else
@@ -133,6 +133,32 @@ namespace StoreWithDataBases
         {
             connectToSQLDB.CloseSQLConnection();
             dgClients.DataContext = null;
+        }
+
+        private void ShowClientProducts_Click(object sender, RoutedEventArgs e)
+        {
+            string email = "";
+
+            if (dgClients.SelectedIndex == -1 || dgClients.SelectedIndex == dT.Rows.Count)
+            {
+                MessageBox.Show("Выберите клиента", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            else
+            {
+                int selectedNumber = dgClients.SelectedIndex;
+                //rowView = (DataRowView)dgClients.SelectedItem;
+                //email = dT.Rows[selectedNumber]["EMail"].ToString();
+            }
+
+            ProductsClient pc = new ProductsClient();
+            pc.Show();
+        }
+
+        private void ShowAllPurchases_Click(object sender, RoutedEventArgs e)
+        {
+            AllPurchasesWindow aPW = new AllPurchasesWindow();
+            aPW.Show();
         }
     }
 }

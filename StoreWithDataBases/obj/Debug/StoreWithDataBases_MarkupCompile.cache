@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\repos\StoreWithDataBases\StoreWithDataBases\App.xaml
-4-1445589562
+7-1993505675
 3443184109
-121490677113
-401143073378
-AddClientWindow.xaml;ClientsWindow.xaml;MainWindow.xaml;RegistrationWindow.xaml;
+16-1680096250
+43-1686724433
+AddClientWindow.xaml;AddProductWindow.xaml;AllPurchasesWindow.xaml;ClientsWindow.xaml;MainWindow.xaml;ProductsClient.xaml;RegistrationWindow.xaml;
 
-True
+False
 

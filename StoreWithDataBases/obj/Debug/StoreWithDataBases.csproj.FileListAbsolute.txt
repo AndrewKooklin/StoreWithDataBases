@@ -69,3 +69,9 @@ C:\repos\StoreWithDataBases\StoreWithDataBases\obj\Debug\ClientsWindow.g.cs
 C:\repos\StoreWithDataBases\StoreWithDataBases\obj\Debug\ClientsWindow.baml
 C:\repos\StoreWithDataBases\StoreWithDataBases\obj\Debug\AddClientWindow.g.cs
 C:\repos\StoreWithDataBases\StoreWithDataBases\obj\Debug\AddClientWindow.baml
+C:\repos\StoreWithDataBases\StoreWithDataBases\obj\Debug\ProductsClient.g.cs
+C:\repos\StoreWithDataBases\StoreWithDataBases\obj\Debug\ProductsClient.baml
+C:\repos\StoreWithDataBases\StoreWithDataBases\obj\Debug\AddProductWindow.g.cs
+C:\repos\StoreWithDataBases\StoreWithDataBases\obj\Debug\AddProductWindow.baml
+C:\repos\StoreWithDataBases\StoreWithDataBases\obj\Debug\AllPurchasesWindow.g.cs
+C:\repos\StoreWithDataBases\StoreWithDataBases\obj\Debug\AllPurchasesWindow.baml

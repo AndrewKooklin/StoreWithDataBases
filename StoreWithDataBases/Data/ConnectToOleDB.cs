@@ -11,9 +11,9 @@ namespace StoreWithDataBases.Data
 {
     public class ConnectToOleDB
     {
-        static string con = "StoreWithDataBases.Properties.Settings.Default.OleDbBase";
+        static string con = StoreWithDataBases.Properties.Settings.Default.OleDbBase;
 
-        OleDbConnection oleDbConnection = new OleDbConnection(ConfigurationManager.ConnectionStrings[con].ConnectionString);
+        OleDbConnection oleDbConnection = new OleDbConnection(con);
 
         public void OpenOleDBConnection()
         {

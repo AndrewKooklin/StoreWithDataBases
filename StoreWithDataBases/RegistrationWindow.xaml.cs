@@ -69,15 +69,14 @@ namespace StoreWithDataBases
                     connectToSQLDB.OpenSQLConnection();
                     sqlCommand.ExecuteNonQuery();
                     connectToSQLDB.CloseSQLConnection();
-                    MessageBox.Show("You succesfully registered", "Error",
-                        MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("You succesfully registered", "Registered",
+                        MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch(Exception ex)
                 {
                     MessageBox.Show($"Could not connect to database({ex.Message})", "Error",
                         MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                MessageBox.Show("");
             }
             else
             {

@@ -1,0 +1,55 @@
+﻿<Window x:Class="StoreWithDataBases.ProductsClient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StoreWithDataBases"
+        mc:Ignorable="d"
+        Title="ProductsClient" 
+        Height="250" 
+        Width="380"
+        WindowStartupLocation="CenterScreen"
+        Loaded="ProductsClientWindow_Loaded"
+        Unloaded="ProductsClientWindow_Unloaded">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="dgClientProducts"
+                  IsSynchronizedWithCurrentItem="True"
+                  SelectionMode="Single"
+                  AutoGenerateColumns="False"
+                  ItemsSource="{Binding}"
+                  IsReadOnly="False"
+                  BorderThickness="2"
+                  CurrentCellChanged="CurrentCell_Changed"
+                  CellEditEnding="CellEdit_Ending">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="tcId"
+                                    Binding="{Binding Id}"
+                                    Header="Id"
+                                    Width="40"
+                                    IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="tcEMail"
+                                    Binding="{Binding EMail}"
+                                    Header="E-Mail"
+                                    Width="110"/>
+                <DataGridTextColumn x:Name="tcProductCode"
+                                    Binding="{Binding ProductCode}"
+                                    Header="Код продукта"
+                                    Width="85"/>
+                <DataGridTextColumn x:Name="tcProductName"
+                                    Binding="{Binding ProductName}"
+                                    Header="Наименование товара"
+                                    Width="142"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        
+    </Grid>
+</Window>
