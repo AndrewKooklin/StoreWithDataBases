@@ -54,8 +54,8 @@ namespace StoreWithDataBases
             //EndInsertCommand
 
             //UpdateCommand
-            query = @"UPDATE Clients SET 
-                           LastName = @wLastName,
+            query = @"UPDATE Clients SET
+                           LastName = @LastName,
                            FirstName = @FirstName, 
                            FathersName = @FathersName,
                            PhoneNumber = @PhoneNumber,
@@ -147,11 +147,11 @@ namespace StoreWithDataBases
             else
             {
                 int selectedNumber = dgClients.SelectedIndex;
-                //rowView = (DataRowView)dgClients.SelectedItem;
-                //email = dT.Rows[selectedNumber]["EMail"].ToString();
+                rowView = (DataRowView)dgClients.SelectedItem;
+                email = dT.Rows[selectedNumber]["EMail"].ToString();
             }
 
-            ProductsClient pc = new ProductsClient();
+            ProductsClient pc = new ProductsClient(email);
             pc.Show();
         }
 

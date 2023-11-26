@@ -58,7 +58,8 @@
                 Height="25"
                 Width="85"
                 Margin="10, 10, 10, 0"
-                Click="BAddProduct_Click">
+                Click="BAddProduct_Click"
+                Cursor="Hand">
         </Button>
         <Button Grid.Column="1"
                 Content="Удалить"
@@ -68,7 +69,8 @@
                 Height="25"
                 Width="85"
                 Margin="18, 60, 20, 10"
-                Click="BDeleteProduct_Click">
+                Click="BDeleteProduct_Click"
+                Cursor="Hand">
         </Button>
     </Grid>
 </Window>

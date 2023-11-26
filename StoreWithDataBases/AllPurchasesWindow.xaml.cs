@@ -112,7 +112,7 @@ namespace StoreWithDataBases
 
         private void BDeleteProduct_Click(object sender, RoutedEventArgs e)
         {
-            if (dgAllPurchasesClients.SelectedIndex == -1)
+            if (dgAllPurchasesClients.SelectedIndex == -1 || !(dgAllPurchasesClients.SelectedItem is DataRowView))
             {
                 MessageBox.Show("Выберите продукт", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;

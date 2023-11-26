@@ -77,14 +77,17 @@
                 VerticalAlignment="Top" 
                 Width="80" 
                 Height="30"
-                FontSize="20" Click="LogIn_Redirect"/>
+                FontSize="20"
+                Cursor="Hand"
+                Click="LogIn_Redirect"/>
         <Button Content="Registration" 
                 HorizontalAlignment="Left" 
                 Margin="246,362,0,0" 
                 VerticalAlignment="Top" 
                 Width="128" 
                 Height="30"
-                FontSize="20" 
+                FontSize="20"
+                Cursor="Hand"
                 Click="Click_Registration"/>
 
 

@@ -7,10 +7,13 @@
         mc:Ignorable="d"
         Title="ProductsClient" 
         Height="250" 
-        Width="380"
+        Width="395"
         WindowStartupLocation="CenterScreen"
         Loaded="ProductsClientWindow_Loaded"
         Unloaded="ProductsClientWindow_Unloaded">
+    <Window.Resources>
+        <local:ClientsWindow x:Key="ClientsWindow"></local:ClientsWindow>
+    </Window.Resources>
     
     <Grid>
         <Grid.RowDefinitions>
@@ -45,7 +48,7 @@
                 <DataGridTextColumn x:Name="tcProductName"
                                     Binding="{Binding ProductName}"
                                     Header="Наименование товара"
-                                    Width="142"/>
+                                    Width="135"/>
 
             </DataGrid.Columns>
         </DataGrid>

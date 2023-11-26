@@ -61,19 +61,22 @@
                 HorizontalAlignment="Left" 
                 Margin="102,223,0,0" 
                 VerticalAlignment="Top" 
-                Width="75"/>
+                Width="75"
+                Cursor="Hand"/>
         <Button x:Name="btnClearForm"
                 Content="Очистить" 
                 HorizontalAlignment="Left" 
                 Margin="201,223,0,0" 
                 VerticalAlignment="Top" 
-                Width="75"/>
+                Width="75"
+                Cursor="Hand"/>
         <Button x:Name="btnCancel"
                 Content="Отменить" 
                 HorizontalAlignment="Left" 
                 Margin="297,223,0,0" 
                 VerticalAlignment="Top" 
-                Width="75"/>
+                Width="75"
+                Cursor="Hand"/>
 
     </Grid>
 </Window>

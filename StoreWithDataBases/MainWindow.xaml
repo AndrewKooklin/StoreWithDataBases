@@ -52,6 +52,7 @@
                 Width="80" 
                 Height="30"
                 FontSize="20"
+                Cursor="Hand"
                 Click="Click_LogIn"/>
         <Button Content="Registration" 
                 HorizontalAlignment="Left" 
@@ -59,7 +60,8 @@
                 VerticalAlignment="Top" 
                 Width="128" 
                 Height="30"
-                FontSize="20" 
+                FontSize="20"
+                Cursor="Hand"
                 Click="Registration_Redirect"/>
     </Grid>
 </Window>

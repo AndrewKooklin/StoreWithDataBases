@@ -40,10 +40,20 @@ namespace StoreWithDataBases
         {
             dT = new DataTable();
             oleDA = new OleDbDataAdapter();
+            string query = "";
 
             //SelectCommand
-            string query = $"SELECT Id, EMail, ProductCode, ProductName " +
-                            $"FROM ClientProducts";
+            if (String.IsNullOrEmpty(Email))
+            {
+                query = $"SELECT Id, EMail, ProductCode, ProductName " +
+                            $"FROM AllPurchasesClients";
+            }
+            else
+            {
+                query = $"SELECT Id, EMail, ProductCode, ProductName " +
+                            $"FROM AllPurchasesClients WHERE EMail = '{Email}'";
+            }
+            
             connectToOleDB = new ConnectToOleDB();
             oleDA.SelectCommand = new OleDbCommand(query, connectToOleDB.GetOleDBConnection());
             //EndSelectCommand
@@ -60,7 +70,7 @@ namespace StoreWithDataBases
             //EndInsertCommand
 
             //UpdateCommand
-            query = @"UPDATE ClientProducts SET EMail = @EMail, ProductCode = @ProductCode, ProductName = @ProductName WHERE Id = @Id";
+            query = @"UPDATE AllPurchasesClients SET EMail = @EMail, ProductCode = @ProductCode, ProductName = @ProductName WHERE Id = @Id";
 
             oleDA.UpdateCommand = new OleDbCommand(query, connectToOleDB.GetOleDBConnection());
             oleDA.UpdateCommand.Parameters.Add("@Id", OleDbType.Integer, 4, "Id").SourceVersion = DataRowVersion.Original;
