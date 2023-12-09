@@ -6,8 +6,12 @@
         xmlns:local="clr-namespace:StoreWithDataBases"
         mc:Ignorable="d"
         Title="AddClientWindow" 
-        Height="400" 
+        Height="400"
+        MinHeight="400"
+        MaxHeight="400"
         Width="450"
+        MinWidth="450"
+        MaxWidth="450"
         WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
@@ -15,6 +19,13 @@
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="Height" Value="30"/>
             <Setter Property="Width" Value="100"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+        <Style x:Key="LabelErrorStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="8"/>
+            <Setter Property="Height" Value="12"/>
+            <Setter Property="Width" Value="200"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
         </Style>
@@ -57,18 +68,43 @@
         <TextBox x:Name="tbLastName"
                  Style="{StaticResource TextBoxStyle}"
                  Margin="172,64,0,0"/>
+        <Label x:Name="lErrorLastName"
+               Content=""
+               Margin="172,96,0,0"
+               Style="{StaticResource LabelErrorStyle}">
+        </Label>
         <TextBox x:Name="tbFirstName"
                  Style="{StaticResource TextBoxStyle}" 
                  Margin="172,113,0,0"/>
+        <Label x:Name="lErrorFirstName"
+               Content=""
+               Margin="172,145,0,0"
+               Style="{StaticResource LabelErrorStyle}">
+        </Label>
         <TextBox x:Name="tbFathersName"
                  Style="{StaticResource TextBoxStyle}" 
                  Margin="172,165,0,0"/>
+        <Label x:Name="lErrorFathersName"
+               Content=""
+               Margin="172,197,0,0"
+               Style="{StaticResource LabelErrorStyle}">
+        </Label>
         <TextBox x:Name="tbPhoneNumber"
                  Style="{StaticResource TextBoxStyle}"
                  Margin="172,215,0,0"/>
+        <Label x:Name="lErrorPhoneNumber"
+               Content=""
+               Margin="172,247,0,0"
+               Style="{StaticResource LabelErrorStyle}">
+        </Label>
         <TextBox x:Name="tbEMail"
                  Style="{StaticResource TextBoxStyle}" 
                  Margin="172,267,0,0"/>
+        <Label x:Name="lErrorEMail"
+               Content=""
+               Margin="172,299,0,0"
+               Style="{StaticResource LabelErrorStyle}">
+        </Label>
         <Button x:Name="btnAddClient"
                 Content="Добавить" 
                 HorizontalAlignment="Left" 

@@ -39,6 +39,11 @@ namespace StoreWithDataBases
 
             btnAddClient.Click += delegate
             {
+                //if(tbLastName.Text == "")
+                //{
+
+                //}
+
                 dataRow["LastName"] = tbLastName.Text;
                 dataRow["FirstName"] = tbFirstName.Text;
                 dataRow["FathersName"] = tbFathersName.Text;

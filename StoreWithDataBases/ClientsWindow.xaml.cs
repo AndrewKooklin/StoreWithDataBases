@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,9 +18,11 @@ namespace StoreWithDataBases
     public partial class ClientsWindow : Window
     {
         SqlDataAdapter sqlDA;
+        OleDbDataAdapter oleDbDA;
         DataTable dT;
         DataRowView rowView;
         ConnectToSQLDB connectToSQLDB;
+        ConnectToOleDB connectToOleDB;
         public ClientsWindow()
         {
             InitializeComponent();
@@ -111,16 +114,63 @@ namespace StoreWithDataBases
 
         private void MIDeleteClient_Click(object sender, RoutedEventArgs e)
         {
-            if (dgClients.SelectedIndex == -1 || rowView == null)
+            string email = "";
+
+            if (dgClients.SelectedIndex == -1 || dgClients.SelectedIndex == dT.Rows.Count)
             {
                 MessageBox.Show("Выберите клиента", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             else
             {
-                rowView = (DataRowView)dgClients.SelectedItem;
-                rowView.Row.Delete();
-                sqlDA.Update(dT);
+                var result = MessageBox.Show("При удалении клиента" +
+                    "\nбудут удалены все его покупки." +
+                    "\nВы уверены, что хотите" +
+                    "\nудалить клиента?", "Удаление клиента и его покупок", 
+                    MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Cancel || result == MessageBoxResult.No)
+                {
+                    return;
+                }
+                if (result == MessageBoxResult.Yes)
+                {
+                    connectToOleDB = new ConnectToOleDB();
+                    oleDbDA = new OleDbDataAdapter();
+                    try
+                    {
+                        int selectedNumber = dgClients.SelectedIndex;
+                        email = dT.Rows[selectedNumber]["EMail"].ToString();
+                        using (connectToOleDB.GetOleDBConnection())
+                        {
+                            string query = $"DELETE FROM AllPurchasesClients WHERE EMail = '{email}'";
+                            connectToOleDB.OpenOleDBConnection();
+                            oleDbDA.DeleteCommand = connectToOleDB.CreateCommandOleDBConnection();
+                            //sqlDA.DeleteCommand.Parameters.Add("@EMail", SqlDbType.VarChar, 50, email);
+                            oleDbDA.DeleteCommand.CommandText = query;
+                            int rows = oleDbDA.DeleteCommand.ExecuteNonQuery();
+                            connectToOleDB.CloseOleDBConnection();
+                            if (rows <= 0)
+                            {
+                                MessageBox.Show("У клиента нет покупок", "Информация",
+                                        MessageBoxButton.OK, MessageBoxImage.Information);
+                            }
+                            if (rows > 0)
+                            {
+                                MessageBox.Show("Покупки клиента удалены", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                            }
+                        }
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        return;
+                    }
+
+                    rowView = (DataRowView)dgClients.SelectedItem;
+                    rowView.Row.Delete();
+                    sqlDA.Update(dT);
+                }
             }
         }
 
@@ -147,7 +197,7 @@ namespace StoreWithDataBases
             else
             {
                 int selectedNumber = dgClients.SelectedIndex;
-                rowView = (DataRowView)dgClients.SelectedItem;
+                //rowView = (DataRowView)dgClients.SelectedItem;
                 email = dT.Rows[selectedNumber]["EMail"].ToString();
             }
 

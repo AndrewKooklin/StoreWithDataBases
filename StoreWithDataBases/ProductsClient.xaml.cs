@@ -45,8 +45,8 @@ namespace StoreWithDataBases
             //SelectCommand
             if (String.IsNullOrEmpty(Email))
             {
-                query = $"SELECT Id, EMail, ProductCode, ProductName " +
-                            $"FROM AllPurchasesClients";
+                MessageBox.Show("Отсутствует E-mail клиента", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
             else
             {
@@ -59,18 +59,18 @@ namespace StoreWithDataBases
             //EndSelectCommand
 
             //InsertCommand
-            //query = @"INSERT INTO ClientProducts (EMail, ProductCode, ProductName) VALUES (@EMail, @ProductCode, @ProductName)";
+            query = @"INSERT INTO AllPurchasesClients (EMail, ProductCode, ProductName) VALUES (?, ?, ?)";
 
-            //oleDA.InsertCommand = new OleDbCommand(query, connectToOleDB.GetOleDBConnection());
+            oleDA.InsertCommand = new OleDbCommand(query, connectToOleDB.GetOleDBConnection());
 
             //oleDA.InsertCommand.Parameters.Add("@Id", OleDbType.Integer, 4, "Id");
-            //oleDA.InsertCommand.Parameters.Add("@EMail", OleDbType.VarChar, 50, "EMail");
-            //oleDA.InsertCommand.Parameters.Add("@ProductCode", OleDbType.VarChar, 50, "ProductCode");
-            //oleDA.InsertCommand.Parameters.Add("@ProductName", OleDbType.VarChar, 50, "ProductName");
+            oleDA.InsertCommand.Parameters.Add("@EMail", OleDbType.VarChar, 50, "EMail");
+            oleDA.InsertCommand.Parameters.Add("@ProductCode", OleDbType.VarChar, 50, "ProductCode");
+            oleDA.InsertCommand.Parameters.Add("@ProductName", OleDbType.VarChar, 50, "ProductName");
             //EndInsertCommand
 
             //UpdateCommand
-            query = @"UPDATE AllPurchasesClients SET EMail = @EMail, ProductCode = @ProductCode, ProductName = @ProductName WHERE Id = @Id";
+            query = @"UPDATE AllPurchasesClients SET EMail = ?, ProductCode = ?, ProductName = ? WHERE Id = ? ";
 
             oleDA.UpdateCommand = new OleDbCommand(query, connectToOleDB.GetOleDBConnection());
             oleDA.UpdateCommand.Parameters.Add("@Id", OleDbType.Integer, 4, "Id").SourceVersion = DataRowVersion.Original;
@@ -80,10 +80,10 @@ namespace StoreWithDataBases
             //EndUpdateCommand
 
             //DeleteCommand
-            //query = "DELETE FROM ClientProducts WHERE Id = @Id";
+            query = "DELETE FROM AllPurchasesClients WHERE Id = ?";
 
-            //oleDA.DeleteCommand = new OleDbCommand(query, connectToOleDB.GetOleDBConnection());
-            //oleDA.DeleteCommand.Parameters.Add("@Id", OleDbType.Integer, 4, "Id");
+            oleDA.DeleteCommand = new OleDbCommand(query, connectToOleDB.GetOleDBConnection());
+            oleDA.DeleteCommand.Parameters.Add("@Id", OleDbType.Integer, 4, "Id");
             //EndDeleteCommand
 
             oleDA.Fill(dT);
@@ -106,12 +106,15 @@ namespace StoreWithDataBases
 
         private void CurrentCell_Changed(object sender, EventArgs e)
         {
-
+            if (rowView == null) return;
+            rowView.EndEdit();
+            oleDA.Update(dT);
         }
 
         private void CellEdit_Ending(object sender, System.Windows.Controls.DataGridCellEditEndingEventArgs e)
         {
-
+            rowView = (DataRowView)dgClientProducts.SelectedItem;
+            rowView.BeginEdit();
         }
 
         private void BDeleteProduct_Click(object sender, RoutedEventArgs e)

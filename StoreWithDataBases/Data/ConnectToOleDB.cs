@@ -31,6 +31,11 @@ namespace StoreWithDataBases.Data
             }
         }
 
+        public OleDbCommand CreateCommandOleDBConnection()
+        {
+            return oleDbConnection.CreateCommand();
+        }
+
         public OleDbConnection GetOleDBConnection()
         {
             return oleDbConnection;

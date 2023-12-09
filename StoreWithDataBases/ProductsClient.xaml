@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="ProductsClient" 
         Height="250" 
-        Width="395"
+        Width="505"
         WindowStartupLocation="CenterScreen"
         Loaded="ProductsClientWindow_Loaded"
         Unloaded="ProductsClientWindow_Unloaded">
@@ -15,11 +15,14 @@
         <local:ClientsWindow x:Key="ClientsWindow"></local:ClientsWindow>
     </Window.Resources>
     
+    
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <DataGrid x:Name="dgClientProducts"
@@ -32,11 +35,11 @@
                   CurrentCellChanged="CurrentCell_Changed"
                   CellEditEnding="CellEdit_Ending">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="tcId"
+                <!--<DataGridTextColumn x:Name="tcId"
                                     Binding="{Binding Id}"
                                     Header="Id"
                                     Width="40"
-                                    IsReadOnly="True"/>
+                                    IsReadOnly="True"/>-->
                 <DataGridTextColumn x:Name="tcEMail"
                                     Binding="{Binding EMail}"
                                     Header="E-Mail"
@@ -52,7 +55,29 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        
-        
+
+        <Button Grid.Column="1"
+                Content="Добавить"
+                VerticalAlignment="Top"
+                FontSize="15"
+                FontWeight="SemiBold"
+                Height="25"
+                Width="85"
+                Margin="10, 10, 10, 0"
+                Click="BAddProduct_Click"
+                Cursor="Hand">
+        </Button>
+        <Button Grid.Column="1"
+                Content="Удалить"
+                VerticalAlignment="Top"
+                FontSize="15"
+                FontWeight="SemiBold"
+                Height="25"
+                Width="85"
+                Margin="18, 60, 20, 10"
+                Click="BDeleteProduct_Click"
+                Cursor="Hand">
+        </Button>
+
     </Grid>
 </Window>

@@ -75,3 +75,4 @@ C:\repos\StoreWithDataBases\StoreWithDataBases\obj\Debug\AddProductWindow.g.cs
 C:\repos\StoreWithDataBases\StoreWithDataBases\obj\Debug\AddProductWindow.baml
 C:\repos\StoreWithDataBases\StoreWithDataBases\obj\Debug\AllPurchasesWindow.g.cs
 C:\repos\StoreWithDataBases\StoreWithDataBases\obj\Debug\AllPurchasesWindow.baml
+C:\repos\StoreWithDataBases\StoreWithDataBases\obj\Debug\GeneratedInternalTypeHelper.g.cs

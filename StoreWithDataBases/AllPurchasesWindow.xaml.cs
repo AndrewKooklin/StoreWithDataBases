@@ -7,13 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace StoreWithDataBases
 {
@@ -69,7 +62,7 @@ namespace StoreWithDataBases
             query = "UPDATE AllPurchasesClients SET EMail = ?, ProductCode = ?, ProductName = ? WHERE Id = ? ";
 
             oleDA.UpdateCommand = new OleDbCommand(query, connectToOleDB.GetOleDBConnection());
-            //oleDA.UpdateCommand.Parameters.Add("@Id", OleDbType.Integer, 4, "Id");
+            oleDA.UpdateCommand.Parameters.Add("@Id", OleDbType.Integer, 4, "Id").SourceVersion = DataRowVersion.Original;
             oleDA.UpdateCommand.Parameters.Add("@EMail", OleDbType.VarChar, 50, "EMail");
             oleDA.UpdateCommand.Parameters.Add("@ProductCode", OleDbType.VarChar, 50, "ProductCode");
             oleDA.UpdateCommand.Parameters.Add("@ProductName", OleDbType.VarChar, 50, "ProductName");
@@ -102,12 +95,15 @@ namespace StoreWithDataBases
 
         private void CurrentCell_Changed(object sender, EventArgs e)
         {
-
+            if (rowView == null) return;
+            rowView.EndEdit();
+            oleDA.Update(dT);
         }
 
         private void CellEdit_Ending(object sender, System.Windows.Controls.DataGridCellEditEndingEventArgs e)
         {
-
+            rowView = (DataRowView)dgAllPurchasesClients.SelectedItem;
+            rowView.BeginEdit();
         }
 
         private void BDeleteProduct_Click(object sender, RoutedEventArgs e)
