@@ -1,1 +1,0 @@
-Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\repos\StoreWithDataBases\Data\OleDbBase.accdb;Jet OLEDB:Database Password=admin
