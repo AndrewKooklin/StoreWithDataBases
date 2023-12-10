@@ -63,16 +63,16 @@ namespace StoreWithDataBases
                 {
                     lErrorFathersName.Content = "";
                 }
-                if (String.IsNullOrWhiteSpace(tbPhoneNumber.Text.ToString()) || 
-                    !Regex.IsMatch(tbPhoneNumber.Text.ToString(), "^[0-9]{11}$"))
-                {
-                    lErrorPhoneNumber.Content = "Введите \"Телефон\" 11 цифр";
-                    return;
-                }
-                else
-                {
-                    lErrorPhoneNumber.Content = "";
-                }
+                //if (String.IsNullOrWhiteSpace(tbPhoneNumber.Text.ToString()) || 
+                //    !Regex.IsMatch(tbPhoneNumber.Text.ToString(), "^[0-9]{11}$"))
+                //{
+                //    lErrorPhoneNumber.Content = "Введите \"Телефон\" 11 цифр";
+                //    return;
+                //}
+                //else
+                //{
+                //    lErrorPhoneNumber.Content = "";
+                //}
                 if (String.IsNullOrWhiteSpace(tbEMail.Text.ToString()) ||
                     !Regex.IsMatch(tbEMail.Text.ToString(), "[a-zA-Z0-9](@)(.+).[a-zA-Z0-9]+$"))
                 {
