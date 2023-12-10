@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="ProductsClient" 
         Height="250" 
-        Width="505"
+        Width="525"
         WindowStartupLocation="CenterScreen"
         Loaded="ProductsClientWindow_Loaded"
         Unloaded="ProductsClientWindow_Unloaded">
@@ -22,7 +22,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <DataGrid x:Name="dgClientProducts"
@@ -35,11 +35,11 @@
                   CurrentCellChanged="CurrentCell_Changed"
                   CellEditEnding="CellEdit_Ending">
             <DataGrid.Columns>
-                <!--<DataGridTextColumn x:Name="tcId"
+                <DataGridTextColumn x:Name="tcId"
                                     Binding="{Binding Id}"
                                     Header="Id"
                                     Width="40"
-                                    IsReadOnly="True"/>-->
+                                    IsReadOnly="True"/>
                 <DataGridTextColumn x:Name="tcEMail"
                                     Binding="{Binding EMail}"
                                     Header="E-Mail"
@@ -51,7 +51,7 @@
                 <DataGridTextColumn x:Name="tcProductName"
                                     Binding="{Binding ProductName}"
                                     Header="Наименование товара"
-                                    Width="135"/>
+                                    Width="145"/>
 
             </DataGrid.Columns>
         </DataGrid>

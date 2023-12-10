@@ -18,14 +18,17 @@
         <Style x:Key="LabelStyle" TargetType="Label">
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="Height" Value="30"/>
-            <Setter Property="Width" Value="100"/>
+            <Setter Property="Padding" Value="2,8,2,1"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
         </Style>
         <Style x:Key="LabelErrorStyle" TargetType="Label">
-            <Setter Property="FontSize" Value="8"/>
-            <Setter Property="Height" Value="12"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Foreground" Value="Red"/>
+            <Setter Property="Height" Value="15"/>
             <Setter Property="Width" Value="200"/>
+            <Setter Property="Margin" Value="10,0,0,3"/>
+            <Setter Property="Padding" Value="0,0,0,1"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
         </Style>
@@ -33,99 +36,130 @@
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="Height" Value="30"/>
             <Setter Property="Width" Value="200"/>
+            <Setter Property="Margin" Value="10,0,0,0"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
         </Style>
     </Window.Resources>
     
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
         <Label Content="Add client form"
+               Grid.ColumnSpan="2"
                FontSize="25" 
-               Margin="100,0,0,0"  
+               Margin="100,0,0,0"
+               Padding="1"
                VerticalAlignment="Top" 
-               Height="40"
+               Height="30"
                Width="200"/>
-        <Label Content="Фамилия"
-               Margin="57,64,0,0"
-               Padding="30,5,0,0"
+        <Label x:Name="lLastName"
+               Grid.Row="1"
+               Content="Фамилия"
                Style="{StaticResource LabelStyle}"/>
         <Label Content="Имя"
-            Margin="57,113,0,0"
-               Padding="65,5,0,0"
+               Grid.Row="3"
                Style="{StaticResource LabelStyle}"/>
         <Label Content="Отчество"
-            Margin="57,165,0,0"
-               Padding="32,5,0,0"
+               Grid.Row="5"
                Style="{StaticResource LabelStyle}"/>
         <Label Content="Телефон"
-            Margin="57,215,0,0"
-               Padding="37,5,0,0"
+               Grid.Row="7"
                Style="{StaticResource LabelStyle}"/>
         <Label Content="E-Mail"
-            Margin="57,267,0,0"
-               Padding="55,5,0,0"
+               Grid.Row="9"
                Style="{StaticResource LabelStyle}"/>
         <TextBox x:Name="tbLastName"
-                 Style="{StaticResource TextBoxStyle}"
-                 Margin="172,64,0,0"/>
+                 Grid.Row="1"
+                 Grid.Column="1"
+                 Style="{StaticResource TextBoxStyle}"/>
         <Label x:Name="lErrorLastName"
-               Content=""
-               Margin="172,96,0,0"
+               Grid.Row="2"
+               Grid.Column="1"
                Style="{StaticResource LabelErrorStyle}">
         </Label>
         <TextBox x:Name="tbFirstName"
-                 Style="{StaticResource TextBoxStyle}" 
-                 Margin="172,113,0,0"/>
+                 Grid.Row="3"
+                 Grid.Column="1"
+                 Style="{StaticResource TextBoxStyle}"/>
         <Label x:Name="lErrorFirstName"
+               Grid.Row="4"
+               Grid.Column="1"
                Content=""
-               Margin="172,145,0,0"
                Style="{StaticResource LabelErrorStyle}">
         </Label>
         <TextBox x:Name="tbFathersName"
-                 Style="{StaticResource TextBoxStyle}" 
-                 Margin="172,165,0,0"/>
+                 Grid.Row="5"
+                 Grid.Column="1"
+                 Style="{StaticResource TextBoxStyle}"/>
         <Label x:Name="lErrorFathersName"
+               Grid.Row="6"
+               Grid.Column="1"
                Content=""
-               Margin="172,197,0,0"
                Style="{StaticResource LabelErrorStyle}">
         </Label>
         <TextBox x:Name="tbPhoneNumber"
-                 Style="{StaticResource TextBoxStyle}"
-                 Margin="172,215,0,0"/>
+                 Grid.Row="7"
+                 Grid.Column="1"
+                 Style="{StaticResource TextBoxStyle}"/>
         <Label x:Name="lErrorPhoneNumber"
+               Grid.Row="8"
+               Grid.Column="1"
                Content=""
-               Margin="172,247,0,0"
-               Style="{StaticResource LabelErrorStyle}">
-        </Label>
+               Style="{StaticResource LabelErrorStyle}"></Label>
         <TextBox x:Name="tbEMail"
-                 Style="{StaticResource TextBoxStyle}" 
-                 Margin="172,267,0,0"/>
+                 Grid.Row="9"
+                 Grid.Column="1"
+                 Style="{StaticResource TextBoxStyle}"/>
         <Label x:Name="lErrorEMail"
+               Grid.Row="10"
+               Grid.Column="1"
                Content=""
-               Margin="172,299,0,0"
                Style="{StaticResource LabelErrorStyle}">
         </Label>
-        <Button x:Name="btnAddClient"
-                Content="Добавить" 
-                HorizontalAlignment="Left" 
-                Margin="102,323,0,0" 
-                VerticalAlignment="Top" 
+        <StackPanel 
+            Grid.Row="11"
+            Grid.ColumnSpan="2"
+            Orientation="Horizontal">
+            <Button x:Name="btnAddClient"
+                Content="Добавить"  
                 Width="75"
+                Height="25"
+                Margin="110,2,2,2"
+                Padding="3"
                 Cursor="Hand"/>
-        <Button x:Name="btnClearForm"
+            <Button x:Name="btnClearForm"
                 Content="Очистить" 
-                HorizontalAlignment="Left" 
-                Margin="201,323,0,0" 
-                VerticalAlignment="Top" 
                 Width="75"
-                Cursor="Hand"/>
-        <Button x:Name="btnCancel"
+                Height="25"
+                Margin="10,2,2,2"
+                Padding="3"
+                Cursor="Hand" />
+            <Button x:Name="btnCancel"
                 Content="Отменить" 
-                HorizontalAlignment="Left" 
-                Margin="297,323,0,0" 
-                VerticalAlignment="Top" 
+                Height="25"
+                Margin="10,2,2,2"
+                Padding="3"
                 Width="75"
                 Cursor="Hand"/>
+        </StackPanel>
+        
 
     </Grid>
 </Window>

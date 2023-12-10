@@ -20,20 +20,11 @@ namespace StoreWithDataBases
         DataRowView rowView;
         ConnectToOleDB connectToOleDB;
 
-        public string Email { get; }
-
         public AllPurchasesWindow()
         {
             InitializeComponent();
             CreateCommands();
         }
-
-        //public ProductsClient(string email)
-        //{
-        //    Email = email;
-        //    InitializeComponent();
-        //    CreateCommands();
-        //}
 
         private void CreateCommands()
         {
@@ -82,7 +73,7 @@ namespace StoreWithDataBases
         private void BAddProduct_Click(object sender, RoutedEventArgs e)
         {
             DataRow dR = dT.NewRow();
-            AddProductWindow addProductWindow = new AddProductWindow(dR);
+            AddProductWindow addProductWindow = new AddProductWindow(dR, "");
             addProductWindow.ShowDialog();
 
 

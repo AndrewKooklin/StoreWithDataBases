@@ -9,7 +9,7 @@
         Height="350" 
         Width="500"
         Loaded="Load_LogIn"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" Unloaded="Window_UnLoaded">
     <Grid>
         <Label Content="LogIn form" 
                HorizontalAlignment="Center"

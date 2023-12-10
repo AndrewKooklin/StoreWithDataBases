@@ -44,13 +44,13 @@ namespace StoreWithDataBases
 
         private void Click_LogIn(object sender, RoutedEventArgs e)
         {
-            if(checkUser.CheckUserToDataBase(tbUserName.Text, tbPassword.Password))
+            if (checkUser.CheckUserToDataBase(tbUserName.Text, tbPassword.Password))
             {
                 MessageBox.Show("User not found" +
                     "\ncheck UserName and Password" +
-                    "\nor pass register", 
-                    "Error", 
-                    MessageBoxButton.OK, MessageBoxImage.Error );
+                    "\nor pass register",
+                    "Error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {

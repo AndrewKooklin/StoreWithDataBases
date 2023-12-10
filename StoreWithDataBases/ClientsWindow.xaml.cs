@@ -183,6 +183,7 @@ namespace StoreWithDataBases
         {
             connectToSQLDB.CloseSQLConnection();
             dgClients.DataContext = null;
+            App.Current.Shutdown();
         }
 
         private void ShowClientProducts_Click(object sender, RoutedEventArgs e)

@@ -93,7 +93,8 @@ namespace StoreWithDataBases
         private void BAddProduct_Click(object sender, RoutedEventArgs e)
         {
             DataRow dR = dT.NewRow();
-            AddProductWindow addProductWindow = new AddProductWindow(dR);
+            AddProductWindow addProductWindow = new AddProductWindow(dR, Email);
+            
             addProductWindow.ShowDialog();
 
 
