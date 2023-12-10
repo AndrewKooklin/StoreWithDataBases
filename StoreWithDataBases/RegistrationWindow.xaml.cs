@@ -12,15 +12,20 @@ using System.Windows;
 namespace StoreWithDataBases
 {
     /// <summary>
-    /// Interaction logic for RegistrationWindow.xaml
+    /// Окно регистрации пользователя
     /// </summary>
     public partial class RegistrationWindow : Window
     {
+        public bool RememberMeIsChecked { get; set; }
+
         public RegistrationWindow()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Действия при нажатии кнопки "Log in" 
+        /// </summary>
         private void LogIn_Redirect(object sender, RoutedEventArgs e)
         {
             this.Hide();
@@ -28,6 +33,9 @@ namespace StoreWithDataBases
             mainWindow.Show();
         }
 
+        /// <summary>
+        /// Действия при нажатии кнопки "Registration" 
+        /// </summary>
         private void Click_Registration(object sender, RoutedEventArgs e)
         {
             CheckUser checkUser = new CheckUser();
@@ -69,6 +77,14 @@ namespace StoreWithDataBases
                     connectToSQLDB.OpenSQLConnection();
                     sqlCommand.ExecuteNonQuery();
                     connectToSQLDB.CloseSQLConnection();
+
+                    if (RememberMeIsChecked)
+                    {
+                        StoreWithDataBases.Properties.Settings.Default.UserName = tbUserName.Text.ToString();
+                        StoreWithDataBases.Properties.Settings.Default.Password = tbPassword.Password.ToString();
+                        StoreWithDataBases.Properties.Settings.Default.Save();
+                    }
+
                     MessageBox.Show("You succesfully registered", "Registered",
                         MessageBoxButton.OK, MessageBoxImage.Information);
                 }
@@ -84,6 +100,22 @@ namespace StoreWithDataBases
                     "\nenter through the Login form", "Error",
                         MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        /// <summary>
+        /// Действие при отметке чекбокса "Запомнить меня"
+        /// </summary>
+        private void RememberMe_Checked(object sender, RoutedEventArgs e)
+        {
+            RememberMeIsChecked = true;
+        }
+
+        /// <summary>
+        /// Действие при очистке чекбокса "Запомнить меня"
+        /// </summary>
+        private void RememberMe_Unchecked(object sender, RoutedEventArgs e)
+        {
+            RememberMeIsChecked = false;
         }
     }
 }

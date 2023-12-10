@@ -100,10 +100,12 @@
                Content=""
                Style="{StaticResource LabelErrorStyle}">
         </Label>
+        
         <StackPanel 
             Grid.Row="11"
             Grid.ColumnSpan="2"
             Orientation="Horizontal">
+            
         <Button x:Name="btnAddProduct"
                 Content="Добавить"
                 Width="75"
@@ -126,5 +128,6 @@
                 Padding="3"
                 Cursor="Hand"/>
         </StackPanel>
+        
     </Grid>
 </Window>

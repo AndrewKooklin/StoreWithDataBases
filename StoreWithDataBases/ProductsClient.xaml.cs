@@ -12,7 +12,7 @@ using System.Windows;
 namespace StoreWithDataBases
 {
     /// <summary>
-    /// Interaction logic for ProductsClient.xaml
+    /// Окно со списком покупок клиента
     /// </summary>
     public partial class ProductsClient : Window
     {
@@ -36,6 +36,9 @@ namespace StoreWithDataBases
             CreateCommands();
         }
 
+        /// <summary>
+        /// Регистрация команд CRUD 
+        /// </summary>
         private void CreateCommands()
         {
             dT = new DataTable();
@@ -90,13 +93,15 @@ namespace StoreWithDataBases
             dgClientProducts.DataContext = dT.DefaultView;
         }
 
+        /// <summary>
+        /// Действия при нажатии кнопки "Добавить" 
+        /// </summary>
         private void BAddProduct_Click(object sender, RoutedEventArgs e)
         {
             DataRow dR = dT.NewRow();
             AddProductWindow addProductWindow = new AddProductWindow(dR, Email);
             
             addProductWindow.ShowDialog();
-
 
             if (addProductWindow.DialogResult.Value)
             {
@@ -105,6 +110,9 @@ namespace StoreWithDataBases
             }
         }
 
+        /// <summary>
+        /// Действия при изменении ячейки 
+        /// </summary>
         private void CurrentCell_Changed(object sender, EventArgs e)
         {
             if (rowView == null) return;
@@ -112,12 +120,18 @@ namespace StoreWithDataBases
             oleDA.Update(dT);
         }
 
+        /// <summary>
+        /// Действия при окончании редактирования ячейки 
+        /// </summary>
         private void CellEdit_Ending(object sender, System.Windows.Controls.DataGridCellEditEndingEventArgs e)
         {
             rowView = (DataRowView)dgClientProducts.SelectedItem;
             rowView.BeginEdit();
         }
 
+        /// <summary>
+        /// Действия при нажатии кнопки "Удалить" 
+        /// </summary>
         private void BDeleteProduct_Click(object sender, RoutedEventArgs e)
         {
             if (dgClientProducts.SelectedIndex == -1)
@@ -133,11 +147,17 @@ namespace StoreWithDataBases
             }
         }
 
+        /// <summary>
+        /// Действия при загрузке окна 
+        /// </summary>
         private void ProductsClientWindow_Loaded(object sender, RoutedEventArgs e)
         {
             dgClientProducts.SelectedItem = null;
         }
 
+        /// <summary>
+        /// Действия при выгрузке окна 
+        /// </summary>
         private void ProductsClientWindow_Unloaded(object sender, RoutedEventArgs e)
         {
             connectToOleDB.CloseOleDBConnection();

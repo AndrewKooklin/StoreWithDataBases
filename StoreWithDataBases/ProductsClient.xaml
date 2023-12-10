@@ -11,11 +11,10 @@
         WindowStartupLocation="CenterScreen"
         Loaded="ProductsClientWindow_Loaded"
         Unloaded="ProductsClientWindow_Unloaded">
+    
     <Window.Resources>
         <local:ClientsWindow x:Key="ClientsWindow"></local:ClientsWindow>
     </Window.Resources>
-    
-    
     
     <Grid>
         <Grid.RowDefinitions>
@@ -25,6 +24,7 @@
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        
         <DataGrid x:Name="dgClientProducts"
                   IsSynchronizedWithCurrentItem="True"
                   SelectionMode="Single"
@@ -34,6 +34,7 @@
                   BorderThickness="2"
                   CurrentCellChanged="CurrentCell_Changed"
                   CellEditEnding="CellEdit_Ending">
+            
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="tcId"
                                     Binding="{Binding Id}"

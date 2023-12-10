@@ -11,7 +11,7 @@ using System.Windows;
 namespace StoreWithDataBases
 {
     /// <summary>
-    /// Interaction logic for AllPurchasesWindow.xaml
+    /// Окно для показа всех покупок всех клиентов
     /// </summary>
     public partial class AllPurchasesWindow : Window
     {
@@ -70,12 +70,14 @@ namespace StoreWithDataBases
             dgAllPurchasesClients.DataContext = dT.DefaultView;
         }
 
+        /// <summary>
+        /// Действия при нажатии кнопки "Добавить" 
+        /// </summary>
         private void BAddProduct_Click(object sender, RoutedEventArgs e)
         {
             DataRow dR = dT.NewRow();
             AddProductWindow addProductWindow = new AddProductWindow(dR, "");
             addProductWindow.ShowDialog();
-
 
             if (addProductWindow.DialogResult.Value)
             {
@@ -84,6 +86,9 @@ namespace StoreWithDataBases
             }
         }
 
+        /// <summary>
+        /// Действия при изменении ячейки 
+        /// </summary>
         private void CurrentCell_Changed(object sender, EventArgs e)
         {
             if (rowView == null) return;
@@ -91,12 +96,18 @@ namespace StoreWithDataBases
             oleDA.Update(dT);
         }
 
+        /// <summary>
+        /// Действия при редактировании ячейки 
+        /// </summary>
         private void CellEdit_Ending(object sender, System.Windows.Controls.DataGridCellEditEndingEventArgs e)
         {
             rowView = (DataRowView)dgAllPurchasesClients.SelectedItem;
             rowView.BeginEdit();
         }
 
+        /// <summary>
+        /// Действия при нажатии кнопки "Удалить" 
+        /// </summary>
         private void BDeleteProduct_Click(object sender, RoutedEventArgs e)
         {
             if (dgAllPurchasesClients.SelectedIndex == -1 || !(dgAllPurchasesClients.SelectedItem is DataRowView))
@@ -112,11 +123,17 @@ namespace StoreWithDataBases
             }
         }
 
+        /// <summary>
+        /// Действия при загрузке окна 
+        /// </summary>
         private void AllPurchasesWindow_Loaded(object sender, RoutedEventArgs e)
         {
             dgAllPurchasesClients.SelectedItem = null;
         }
 
+        /// <summary>
+        /// Действия при закрытии окна 
+        /// </summary>
         private void AllPurchasesWindow_Unloaded(object sender, RoutedEventArgs e)
         {
             connectToOleDB.CloseOleDBConnection();

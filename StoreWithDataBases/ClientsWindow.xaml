@@ -21,6 +21,7 @@
             <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        
         <DataGrid x:Name="dgClients"
                   IsSynchronizedWithCurrentItem="True"
                   SelectionMode="Single"
@@ -30,6 +31,7 @@
                   BorderThickness="2"
                   CurrentCellChanged="CurrentCell_Changed"
                   CellEditEnding="CellEdit_Ending">
+
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="tcId"
                                     Binding="{Binding Id}"
@@ -57,14 +59,8 @@
                                     Header="E-Mail"
                                     Width="139"/>
             </DataGrid.Columns>
-            <!--<DataGrid.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Добавить" Click="MIAddClient_Click"></MenuItem>
-                    <MenuItem Header="Удалить" Click="MIDeleteClient_Click"></MenuItem>
-                </ContextMenu>
-            </DataGrid.ContextMenu>-->
-
         </DataGrid>
+        
         <Button Grid.Column="1"
                 Content="Добавить"
                 VerticalAlignment="Top"

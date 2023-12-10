@@ -61,6 +61,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
+        
         <Label Content="Add client form"
                Grid.ColumnSpan="2"
                FontSize="25" 
@@ -133,10 +134,12 @@
                Content=""
                Style="{StaticResource LabelErrorStyle}">
         </Label>
+        
         <StackPanel 
             Grid.Row="11"
             Grid.ColumnSpan="2"
             Orientation="Horizontal">
+            
             <Button x:Name="btnAddClient"
                 Content="Добавить"  
                 Width="75"
@@ -160,6 +163,5 @@
                 Cursor="Hand"/>
         </StackPanel>
         
-
     </Grid>
 </Window>

@@ -11,6 +11,7 @@
         WindowStartupLocation="CenterScreen"
         Loaded="AllPurchasesWindow_Loaded"
         Unloaded="AllPurchasesWindow_Unloaded">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -19,6 +20,7 @@
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        
         <DataGrid x:Name="dgAllPurchasesClients"
                   IsSynchronizedWithCurrentItem="True"
                   SelectionMode="Single"
@@ -28,6 +30,7 @@
                   BorderThickness="2"
                   CurrentCellChanged="CurrentCell_Changed"
                   CellEditEnding="CellEdit_Ending">
+            
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="tcId"
                                     Binding="{Binding Id}"

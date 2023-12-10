@@ -13,7 +13,7 @@ using System.Windows.Controls;
 namespace StoreWithDataBases
 {
     /// <summary>
-    /// Interaction logic for ClientsWindow.xaml
+    /// Окно со списком клиентов
     /// </summary>
     public partial class ClientsWindow : Window
     {
@@ -29,6 +29,9 @@ namespace StoreWithDataBases
             CreateCommands();
         }
 
+        /// <summary>
+        /// Метод формирования команд CRUD
+        /// </summary>
         private void CreateCommands()
         {
             dT = new DataTable();
@@ -85,6 +88,9 @@ namespace StoreWithDataBases
             dgClients.DataContext = dT.DefaultView;
         }
 
+        /// <summary>
+        /// Действия при изменении ячейки 
+        /// </summary>
         private void CurrentCell_Changed(object sender, EventArgs e)
         {
             if (rowView == null) return;
@@ -92,18 +98,23 @@ namespace StoreWithDataBases
             sqlDA.Update(dT);
         }
 
+        /// <summary>
+        /// Действия при окончании редактирования ячейки 
+        /// </summary>
         private void CellEdit_Ending(object sender, DataGridCellEditEndingEventArgs e)
         {
             rowView = (DataRowView)dgClients.SelectedItem;
             rowView.BeginEdit();
         }
 
+        /// <summary>
+        /// Действия при нажатии кнопки "Добавить" 
+        /// </summary>
         private void MIAddClient_Click(object sender, RoutedEventArgs e)
         {
             DataRow dR = dT.NewRow();
             AddClientWindow addClientWindow = new AddClientWindow(dR);
             addClientWindow.ShowDialog();
-
 
             if (addClientWindow.DialogResult.Value)
             {
@@ -112,6 +123,9 @@ namespace StoreWithDataBases
             }
         }
 
+        /// <summary>
+        /// Действия при нажатии кнопки "Удалить" 
+        /// </summary>
         private void MIDeleteClient_Click(object sender, RoutedEventArgs e)
         {
             string email = "";
@@ -174,11 +188,17 @@ namespace StoreWithDataBases
             }
         }
 
+        /// <summary>
+        /// Действия при загрузке окна 
+        /// </summary>
         private void ClientsWindow_Loaded(object sender, RoutedEventArgs e)
         {
             dgClients.SelectedItem = null;
         }
 
+        /// <summary>
+        /// Действия при закрытии окна 
+        /// </summary>
         private void ClientsWindow_Unloaded(object sender, RoutedEventArgs e)
         {
             connectToSQLDB.CloseSQLConnection();
@@ -186,6 +206,9 @@ namespace StoreWithDataBases
             App.Current.Shutdown();
         }
 
+        /// <summary>
+        /// Действия при нажатии кнопки "Покупки клиента" 
+        /// </summary>
         private void ShowClientProducts_Click(object sender, RoutedEventArgs e)
         {
             string email = "";
@@ -206,6 +229,9 @@ namespace StoreWithDataBases
             pc.Show();
         }
 
+        /// <summary>
+        /// Действия при нажатии кнопки "Все покупки" 
+        /// </summary>
         private void ShowAllPurchases_Click(object sender, RoutedEventArgs e)
         {
             AllPurchasesWindow aPW = new AllPurchasesWindow();

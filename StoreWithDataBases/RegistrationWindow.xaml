@@ -18,7 +18,6 @@
                Margin="150,32,171.6,0" 
                VerticalAlignment="Top" 
                Width="272"/>
-
         <Label Content="UserName"
                FontSize="20"
                HorizontalAlignment="Left" 
@@ -64,7 +63,9 @@
                   Margin="266,307,0,0" 
                   VerticalAlignment="Top" 
                   Height="25" 
-                  Width="25"/>
+                  Width="25"
+                  Checked="RememberMe_Checked"
+                  Unchecked="RememberMe_Unchecked"/>
         <Label Content="Remember me"
                FontSize="20"
                HorizontalAlignment="Left" 
@@ -89,8 +90,6 @@
                 FontSize="20"
                 Cursor="Hand"
                 Click="Click_Registration"/>
-
-
 
     </Grid>
 </Window>

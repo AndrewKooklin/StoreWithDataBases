@@ -5,19 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace StoreWithDataBases
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Окно входа
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -35,6 +27,9 @@ namespace StoreWithDataBases
             tbPassword.Password = StoreWithDataBases.Properties.Settings.Default.Password;
         }
 
+        /// <summary>
+        /// Действия при нажатии кнопки "Зарегистрироваться" 
+        /// </summary>
         private void Registration_Redirect(object sender, RoutedEventArgs e)
         {
             this.Hide();
@@ -42,6 +37,9 @@ namespace StoreWithDataBases
             registrationWindow.Show();
         }
 
+        /// <summary>
+        /// Действия при нажатии кнопки "Log in" 
+        /// </summary>
         private void Click_LogIn(object sender, RoutedEventArgs e)
         {
             if (checkUser.CheckUserToDataBase(tbUserName.Text, tbPassword.Password))
